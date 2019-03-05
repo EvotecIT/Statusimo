@@ -1,6 +1,6 @@
 function Get-StatusimoIncidents {
     param(
-        $FolderPath      
+        [string] $FolderPath      
     )
     $Files = Get-ChildItem -LiteralPath $FolderPath    
     foreach ($File in $Files) {       

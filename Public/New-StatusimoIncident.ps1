@@ -1,4 +1,5 @@
 function New-StatusimoIncident {
+    [cmdletbinding()]
     param(
         [DateTime] $Date = (Get-Date),
         [string] $Service,

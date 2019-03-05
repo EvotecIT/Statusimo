@@ -1,7 +1,8 @@
 function New-StatusimoPage {
+    [cmdletbinding()]
     param(
-        $FilePath,
-        $IncidentsPath
+        [string] $FilePath,
+        [string] $IncidentsPath
     )
     $DynamicHTML = New-HTML -TitleText 'Services Status' `
         -HideLogos:$true `
