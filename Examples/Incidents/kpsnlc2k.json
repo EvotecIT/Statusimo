@@ -1,0 +1,8 @@
+{
+    "Date":  "\/Date(1551825056349)\/",
+    "Service":  "Active Directory",
+    "Status":  "Partial Degradation",
+    "Tag":  "",
+    "Title":  "Active Directory controller is down",
+    "Overview":  "We\u0027re currently experiencing issues with Active Directory. It may work slower then usual."
+}
