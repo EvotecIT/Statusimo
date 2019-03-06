@@ -9,7 +9,10 @@ function New-StatusimoIncident {
         [string] $Overview,
         [string] $FolderPath
     )
-    $FileName = Get-FileName -Extension 'json' -TemporaryFileOnly
+    $FileNameService = $Service -replace '[^a-zA-Z]', '_'
+    $FileNameData = $Date.ToString("yyyy-MM-dd_HH_MM_ss")
+    $FileNameEnd = Get-FileName -Extension 'json' -TemporaryFileOnly
+    $FileName = $FileNameService + '_' + $FileNameData + '_' + $FileNameEnd
     $FilePath = [IO.Path]::Combine($FolderPath, $FileName)
 
     $Incident = [ordered] @{
