@@ -4,7 +4,6 @@ $newStatusimoIncidentSplat = @{
     Title      = 'Exchange Servers are Down'
     Status     = 'Down'
     Service    = 'Exchange'
-    Tag        = ''
     FolderPath = "$PSScriptRoot\Incidents"
 }
-New-StatusimoIncident @newStatusimoIncidentSplat
+New-StatusimoEvent @newStatusimoIncidentSplat

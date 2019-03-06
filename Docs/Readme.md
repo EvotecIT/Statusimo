@@ -11,12 +11,15 @@ Locale: en-US
 {{Manually Enter Description Here}}
 
 ## Statusimo Cmdlets
-### [Get-StatusimoIncidents](Get-StatusimoIncidents.md)
-{{Manually Enter Get-StatusimoIncidents Description Here}}
+### [New-StatusimoEvent](New-StatusimoEvent.md)
+{{Manually Enter New-StatusimoEvent Description Here}}
 
-### [New-PrepareStatusPage](New-PrepareStatusPage.md)
-{{Manually Enter New-PrepareStatusPage Description Here}}
+### [New-StatusimoMaintenance](New-StatusimoMaintenance.md)
+{{Manually Enter New-StatusimoMaintenance Description Here}}
 
-### [New-StatusimoIncident](New-StatusimoIncident.md)
-{{Manually Enter New-StatusimoIncident Description Here}}
+### [New-StatusimoPage](New-StatusimoPage.md)
+{{Manually Enter New-StatusimoPage Description Here}}
+
+### [Remove-StatusimoMaintenance](Remove-StatusimoMaintenance.md)
+{{Manually Enter Remove-StatusimoMaintenance Description Here}}
 

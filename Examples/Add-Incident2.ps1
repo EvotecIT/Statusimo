@@ -6,7 +6,6 @@ $newStatusimoIncidentSplat = @{
     Title = 'Active Directory controller is down'
     Status = 'Partial Degradation'
     Service = 'Active Directory'
-    Tag = ''
     FolderPath = "$PSScriptRoot\Incidents"
 }
-New-StatusimoIncident @newStatusimoIncidentSplat
+New-StatusimoEvent @newStatusimoIncidentSplat

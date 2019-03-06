@@ -5,7 +5,7 @@ online version:
 schema: 2.0.0
 ---
 
-# New-StatusimoIncident
+# New-StatusimoMaintenance
 
 ## SYNOPSIS
 {{Fill in the Synopsis}}
@@ -13,8 +13,8 @@ schema: 2.0.0
 ## SYNTAX
 
 ```
-New-StatusimoIncident [[-Date] <DateTime>] [[-Service] <String>] [[-Status] <String>] [[-Tag] <String>]
- [[-Title] <String>] [[-Overview] <String>] [[-FolderPath] <String>]
+New-StatusimoMaintenance [[-DateStart] <DateTime>] [[-DateEnd] <DateTime>] [[-Service] <String>]
+ [[-Status] <String>] [[-Title] <String>] [[-Overview] <String>] [[-FolderPath] <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,8 +31,23 @@ PS C:\> {{ Add example code here }}
 
 ## PARAMETERS
 
-### -Date
-{{Fill Date Description}}
+### -DateEnd
+{{Fill DateEnd Description}}
+
+```yaml
+Type: DateTime
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DateStart
+{{Fill DateStart Description}}
 
 ```yaml
 Type: DateTime
@@ -85,7 +100,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 1
+Position: 2
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -99,21 +114,6 @@ Type: String
 Parameter Sets: (All)
 Aliases:
 Accepted values: Operational, Partial Degradation, Down
-
-Required: False
-Position: 2
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Tag
-{{Fill Tag Description}}
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
 
 Required: False
 Position: 3
@@ -136,6 +136,10 @@ Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
+
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
+For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

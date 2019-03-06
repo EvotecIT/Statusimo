@@ -2,14 +2,18 @@ function New-StatusimoPage {
     [cmdletbinding()]
     param(
         [string] $FilePath,
-        [string] $IncidentsPath
+        [alias('Incident', 'Incidents', 'IncidentPath')][string] $IncidentsPath,
+        [alias('Maintenance', 'MaintenancePath')][string] $MaintenancesPath
     )
     $DynamicHTML = New-HTML -TitleText 'Services Status' `
         -HideLogos:$true `
         -UseCssLinks:$true `
         -UseStyleLinks:$true {
 
-        $Incidents = Get-StatusimoIncidents -FolderPath $IncidentsPath | Sort-Object -Property Date, Title -Descending
+        $Today = Get-Date
+        $Incidents = Get-StatusimoData -FolderPath $IncidentsPath | Sort-Object -Property Date, Title -Descending
+        $Maintenances = Get-StatusimoData -FolderPath $MaintenancesPath | Sort-Object -Property DateEnd, DateStart, Title -Descending
+
         $IncidentTypes = $Incidents.Service | Sort-Object -Unique
         
     
@@ -50,7 +54,16 @@ function New-StatusimoPage {
         New-HTMLHeading -Heading h1 -HeadingText 'Scheduled Maintenance' -Type 'central'
         
         New-HTMLColumn -Invisible {
-            New-HTMLToast -Icon Information -Color Orange -TextHeader 'Maintenance' -Text "We've planned maintenance on 24th of January 2020. It will last 30 hours."
+            foreach ($Maintenance in $Maintenances) {
+                $Title = "$($Maintenance.Title) ($($Maintenance.DateStart) - $($Maintenance.DateEnd))" 
+                if ($Today -ge $Maintenance.DateStart -and $Today -le $Maintenance.DateEnd) {
+                    New-HTMLToast -Icon Exclamation -Color Orange -TextHeader $Title -Text $Maintenance.Overview
+                } elseif ($Today -le $Maintenance.DateStart) {
+                    New-HTMLToast -Icon Information -Color Blue -TextHeader $Title -Text $Maintenance.Overview
+                } else {
+                    New-HTMLToast -Icon Success -Color Green -TextHeader $Title -Text $Maintenance.Overview
+                }
+            }
         }
     
     
@@ -78,7 +91,7 @@ function New-StatusimoPage {
         }
     
     
-        New-HTMLHeading -Heading h1 -HeadingText 'Past Incidents' -Type 'central'
+        New-HTMLHeading -Heading h1 -HeadingText 'Timeline' -Type 'central'
     
         New-HTMLColumn -Columns 1 -Invisible {    
             New-HTMLTimeline {
