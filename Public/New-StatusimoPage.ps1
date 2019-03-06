@@ -58,7 +58,9 @@ function New-StatusimoPage {
     
         New-HTMLColumn -Columns 1 -Invisible {
             $Data = foreach ($Element in 30..0) {
-                Get-Random -Minimum 0 -Maximum 5
+                $Date = (Get-Date).AddDays(-$Element).Date
+                $IncidentsPerDay = $Incidents | Where-Object { $_.Status -eq 'Partial Degradation' -or $_.Status -eq 'Down' -and $_.Date.Date -eq $Date }
+                $IncidentsPerDay.Count
             }
             $DataName = "Incidents"
             $DataCategories = foreach ($Element in 30..0) {
