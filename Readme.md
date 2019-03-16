@@ -21,6 +21,15 @@
 -   [Overview of Statusimo](https://evotec.xyz/meet-statusimo-powershell-generated-status-page/) - First version overview and how-to
 
 
+### Changelog
+
+- 0.2 - 16.03.2019
+  -  Fix for TimeZone issue being UTC (thanks Steve (borough11)
+  -  Updates to support changes in PSWriteHTML (requires newest version of PSWriteHTML 0.0.13+)
+  -  Cleaner HTML/JS/CSS (updates to PSWriteHTML)
+  -  Smaller output size (updaate to PSWriteHTML)
+- 0.1 - First version
+
 ### Example - Status Page
 
 ![image](https://evotec.xyz/wp-content/uploads/2019/03/img_5c7feee0d161a.png)
