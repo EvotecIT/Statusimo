@@ -26,8 +26,9 @@
 - 0.2 - 16.03.2019
   -  Fix for TimeZone issue being UTC (thanks Steve (borough11)
   -  Updates to support changes in PSWriteHTML (requires newest version of PSWriteHTML 0.0.13+)
-  -  Cleaner HTML/JS/CSS (updates to PSWriteHTML)
-  -  Smaller output size (updaate to PSWriteHTML)
+  -  Small visual change to TimeLine (using Roboto font, a bit larger size)
+  -  Cleaner HTML/JS/CSS (update to PSWriteHTML)
+  -  Smaller output size (update to PSWriteHTML)
 - 0.1 - First version
 
 ### Example - Status Page
