@@ -5,10 +5,7 @@ function New-StatusimoPage {
         [alias('Incident', 'Incidents', 'IncidentPath')][string] $IncidentsPath,
         [alias('Maintenance', 'MaintenancePath')][string] $MaintenancesPath
     )
-    $DynamicHTML = New-HTML -TitleText 'Services Status' `
-        -HideLogos:$true `
-        -UseCssLinks:$true `
-        -UseStyleLinks:$true {
+    $DynamicHTML = New-HTML -TitleText 'Services Status' -UseCssLinks:$true -UseJavaScriptLinks:$true {
 
         $Today = Get-Date
         $Incidents = Get-StatusimoData -FolderPath $IncidentsPath | Sort-Object -Property Date, Title -Descending
@@ -17,7 +14,7 @@ function New-StatusimoPage {
         $IncidentTypes = $Incidents.Service | Sort-Object -Unique
         
     
-        New-HTMLColumn -Invisible {
+        New-HTMLPanel -Invisible {
             $Statuses = foreach ($Type in $IncidentTypes) {
                 $Incidents |  Where-Object { $_.Service -eq $Type  } | Select-Object -First 1 -ExpandProperty Status
             }
@@ -30,7 +27,7 @@ function New-StatusimoPage {
     
         New-HTMLHeading -Heading h1 -HeadingText 'Current Status' -Type 'central'
     
-        New-HTMLColumn -Columns 1 -Invisible { 
+        New-HTMLPanel -Count 1 -Invisible { 
             New-HTMLStatus {
 
                 foreach ($Type in $IncidentTypes) {
@@ -53,7 +50,7 @@ function New-StatusimoPage {
     
         New-HTMLHeading -Heading h1 -HeadingText 'Scheduled Maintenance' -Type 'central'
         
-        New-HTMLColumn -Invisible {
+        New-HTMLPanel -Invisible {
             foreach ($Maintenance in $Maintenances) {
                 $Title = "$($Maintenance.Title) ($($Maintenance.DateStart) - $($Maintenance.DateEnd))" 
                 if ($Today -ge $Maintenance.DateStart -and $Today -le $Maintenance.DateEnd) {
@@ -69,7 +66,7 @@ function New-StatusimoPage {
     
         New-HTMLHeading -Heading h1 -HeadingText 'Incidents per day' -Type 'central'
     
-        New-HTMLColumn -Columns 1 -Invisible {
+        New-HTMLPanel -Count 1 -Invisible {
             $Data = foreach ($Element in 30..0) {
                 $Date = (Get-Date).AddDays(-$Element).Date
                 $IncidentsPerDay = $Incidents | Where-Object { ($_.Status -eq 'Partial Degradation' -or $_.Status -eq 'Down') -and $_.Date.Date -eq $Date }
@@ -93,7 +90,7 @@ function New-StatusimoPage {
     
         New-HTMLHeading -Heading h1 -HeadingText 'Timeline' -Type 'central'
     
-        New-HTMLColumn -Columns 1 -Invisible {    
+        New-HTMLPanel -Count 1 -Invisible {    
             New-HTMLTimeline {
                 foreach ($Incident in $Incidents) {
                     New-HTMLTimelineItem -HeadingText $Incident.Title -Text $Incident.Overview -Date $Incident.Date

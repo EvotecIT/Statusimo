@@ -7,7 +7,7 @@ function Get-StatusimoData {
         $Files = Get-ChildItem -LiteralPath $FolderPath    
         foreach ($File in $Files) {       
             $Output = Get-Content -LiteralPath $File.FullName -Raw | ConvertFrom-Json
-            $Output | Add-Member -Name 'FullName' -Value $File.FullName -MemberType NoteProperty -Force
+            Add-Member -InputObject $Output -Name 'FullName' -Value $File.FullName -MemberType NoteProperty -Force
             $Output
         }
     } 
