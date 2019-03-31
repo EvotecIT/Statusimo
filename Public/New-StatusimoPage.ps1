@@ -6,7 +6,7 @@ function New-StatusimoPage {
         [alias('Maintenance', 'MaintenancePath')][string] $MaintenancesPath,
         [int] $AutoRefresh
     )
-    $DynamicHTML = New-HTML -TitleText 'Services Status' -UseCssLinks:$true -UseJavaScriptLinks:$true -AutoRefresh $AutoRefresh {
+    New-HTML -TitleText 'Services Status' -UseCssLinks:$true -UseJavaScriptLinks:$true -AutoRefresh $AutoRefresh -FilePath $FilePath {
 
         $Today = Get-Date
         $Incidents = Get-StatusimoData -FolderPath $IncidentsPath | Sort-Object -Property Date, Title -Descending
@@ -97,5 +97,4 @@ function New-StatusimoPage {
             }
         }
     }
-    [string] $DynamicHTMLPath = Save-HTML -HTML $DynamicHTML -FilePath $FilePath
 }
