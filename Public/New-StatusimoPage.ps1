@@ -16,7 +16,7 @@ function New-StatusimoPage {
 
         New-HTMLPanel -Invisible {
             $Statuses = foreach ($Type in $IncidentTypes) {
-                $Incidents |  Where-Object { $_.Service -eq $Type  } | Select-Object -First 1 -ExpandProperty Status
+                $Incidents | Where-Object { $_.Service -eq $Type } | Select-Object -First 1 -ExpandProperty Status
             }
             if ($Statuses -notcontains 'Partial Degradation' -and $Statuses -notcontains 'Down') {
                 New-HTMLToast -Icon Information -Color Blue -TextHeader 'Information' -Text 'Everything is running smoothly!'
@@ -31,7 +31,7 @@ function New-StatusimoPage {
             New-HTMLStatus {
 
                 foreach ($Type in $IncidentTypes) {
-                    $IncidentStatus = $Incidents | Where-Object { $_.Service -eq $Type  } | Select-Object -First 1
+                    $IncidentStatus = $Incidents | Where-Object { $_.Service -eq $Type } | Select-Object -First 1
                     if ($IncidentStatus.Status -eq 'Operational') {
                         $Icon = 'Good'
                         $Percentage = '100%'
@@ -72,11 +72,10 @@ function New-StatusimoPage {
                 $IncidentsPerDay = $Incidents | Where-Object { ($_.Status -eq 'Partial Degradation' -or $_.Status -eq 'Down') -and $_.Date.Date -eq $Date }
                 Get-ObjectCount -Object $IncidentsPerDay
             }
-            $DataName = "Incidents"
             $DataCategories = foreach ($Element in 30..0) {
                 (Get-Date).AddDays(-$Element).ToShortDateString()
             }
-
+            <#
             New-HTMLChart `
                 -Data $Data `
                 -DataNames $DataName `
@@ -85,6 +84,13 @@ function New-StatusimoPage {
                 -TitleText '' `
                 -TitleAlignment 'left' `
                 -LineColor 'Blue' -Horizontal $false -Positioning central
+
+                #>
+
+            New-HTMLChart -Title 'Incidents per day' -TitleAlignment left -Positioning central {
+                New-ChartCategory -Name $DataCategories
+                New-ChartLine -Name 'Incidents' -Value $Data
+            }
         }
 
         New-HTMLHeading -Heading h1 -HeadingText 'Timeline' -Type 'central' -Color Black
