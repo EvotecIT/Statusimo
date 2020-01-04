@@ -8,7 +8,7 @@
   <a href="https://www.powershellgallery.com/packages/Statusimo"><img src="https://img.shields.io/powershellgallery/p/Statusimo.svg"></a>
   <a href="https://github.com/EvotecIT/Statusimo"><img src="https://img.shields.io/github/languages/top/evotecit/Statusimo.svg"></a>
   <a href="https://github.com/EvotecIT/Statusimo"><img src="https://img.shields.io/github/languages/code-size/evotecit/Statusimo.svg"></a>
-  <a href="https://github.com/EvotecIT/Statusimo"><img src="https://img.shields.io/powershellgallery/dt/Statusimo.svg"></a>
+  <a href="https://www.powershellgallery.com/packages/Statusimo"><img src="https://img.shields.io/powershellgallery/dt/Statusimo.svg"></a>
 </p>
 
 <p align="center">
