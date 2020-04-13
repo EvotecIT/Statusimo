@@ -17,7 +17,6 @@
   <a href="https://www.linkedin.com/in/pklys"><img src="https://img.shields.io/badge/LinkedIn-pklys-0077B5.svg?logo=LinkedIn"></a>
 </p>
 
-
 # Statusimo - PowerShell Module
 
 **Statusimo** is a **PowerShell** module that is able to generate a **Status Page** entirely from **PowerShell**. There are many solutions on the market that allow you to host and build your own Status Page for services you have but usually, it comes at a cost or it has some special requirements one has to meet. Following module generates a static HTML page that contains JavaScript/CSS and HTML in one single file you can put on a server or publish using any way you want.
@@ -29,15 +28,18 @@
 
 ### Changelog
 
-- [X] 0.5 - Not released
+- 0.6 - 13.04.2020
   - Support for new PSWriteHTML
-- [x] 0.2 - 16.03.2019
+  - Default works `offline`. You need to use `Online switch to use Links
+- 0.5 - 8.04.2019
+  - Support for new PSWriteHTML
+- 0.2 - 16.03.2019
   - [x] Fix for TimeZone issue being UTC (thanks Steve (borough11)
   - [x] Updates to support changes in PSWriteHTML (requires newest version of PSWriteHTML 0.0.13+)
   - [x] Small visual change to TimeLine (using Roboto font, a bit larger size)
   - [x] Cleaner HTML/JS/CSS (update to PSWriteHTML)
   - [x] Smaller output size (update to PSWriteHTML)
-- [x] 0.1
+- 0.1
   - [x] First version
 
 ### Example - Status Page

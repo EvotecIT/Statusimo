@@ -4,9 +4,10 @@ function New-StatusimoPage {
         [string] $FilePath,
         [alias('Incident', 'Incidents', 'IncidentPath')][string] $IncidentsPath,
         [alias('Maintenance', 'MaintenancePath')][string] $MaintenancesPath,
-        [int] $AutoRefresh
+        [int] $AutoRefresh,
+        [switch] $Online
     )
-    New-HTML -TitleText 'Services Status' -UseCssLinks:$true -UseJavaScriptLinks:$true -AutoRefresh $AutoRefresh -FilePath $FilePath {
+    New-HTML -TitleText 'Services Status' -Online:$Online -AutoRefresh $AutoRefresh -FilePath $FilePath {
 
         $Today = Get-Date
         $Incidents = Get-StatusimoData -FolderPath $IncidentsPath | Sort-Object -Property Date, Title -Descending
