@@ -12,7 +12,7 @@
     RootModule           = 'Statusimo.psm1'
 
     # Version number of this module.
-    ModuleVersion        = '0.5.1'
+    ModuleVersion        = '0.6'
 
     # Supported PSEditions
     CompatiblePSEditions = 'Desktop', 'Core'
@@ -51,7 +51,8 @@
     # ProcessorArchitecture = ''
 
     # Modules that must be imported into the global environment prior to importing this module
-    RequiredModules      = @(@{ModuleName = 'PSWriteHTML'; GUID = 'a7bdf640-f5cb-4acf-9de0-365b322d245c'; ModuleVersion = '0.0.80'; })
+    RequiredModules      = @(@{ModuleName = 'PSWriteHTML'; GUID = 'a7bdf640-f5cb-4acf-9de0-365b322d245c'; ModuleVersion = '0.0.80'; }, 
+        @{ModuleName = 'PSSharedGoods'; GUID = 'ee272aa8-baaa-4edf-9f45-b6d6f7d844fe'; ModuleVersion = '0.0.134'; })
 
     # Assemblies that must be loaded prior to importing this module
     # RequiredAssemblies = @()
